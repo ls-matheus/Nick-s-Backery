@@ -1,0 +1,180 @@
+/* ==========================================================================
+   Nick's Bakery - DESKTOP PLATFORM MODULE (>= 901px) - FROZEN & PROTECTED
+   ========================================================================== */
+
+@media (min-width: 901px) {
+    /* Navbar Desktop Fixed Pill Bar */
+    .começo {
+        position: fixed !important;
+        top: clamp(1.2rem, 3vmin, 2rem) !important;
+        bottom: auto !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: fit-content !important;
+        height: auto !important;
+        padding: 0 !important;
+        z-index: 1000 !important;
+        pointer-events: none !important;
+    }
+
+    .barra {
+        height: clamp(66px, 8vmin, 78px) !important;
+        padding: clamp(12px, 1.6vmin, 16px) 18px !important;
+    }
+
+    .nav-indicator {
+        height: clamp(42px, 5vmin, 48px) !important;
+    }
+
+    .lista {
+        gap: clamp(4px, 1vmin, 8px) !important;
+    }
+
+    .item a {
+        padding: 0 clamp(10px, 1.8vmin, 16px) !important;
+        height: clamp(42px, 5vmin, 48px) !important;
+        width: auto !important;
+        min-width: clamp(44px, 5vmin, 50px) !important;
+        font-size: clamp(0.9rem, 1.8vmin, 1.02rem) !important;
+        gap: 6px !important;
+    }
+
+    .lista:not(.has-hover) .item.active a,
+    .lista.has-hover .item.is-hovered a,
+    .lista .item:hover a {
+        padding: 0 clamp(16px, 2.5vmin, 22px) !important;
+        width: auto !important;
+        min-width: clamp(100px, 12vmin, 125px) !important;
+    }
+
+    .lista.has-hover .item.active:not(.is-hovered) a {
+        padding: 0 clamp(10px, 1.8vmin, 16px) !important;
+        width: auto !important;
+        min-width: clamp(44px, 5vmin, 50px) !important;
+    }
+
+    .item a .material-symbols-outlined, 
+    .item a i {
+        font-size: clamp(18px, 2.2vmin, 22px) !important;
+    }
+
+    /* Home Layout 2-Column Desktop Grid */
+    .home-container {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        grid-template-rows: 1fr !important;
+        text-align: center !important;
+        gap: clamp(1.5rem, 4vmin, 5.5rem) !important;
+        max-width: 103rem !important;
+        margin: 0 auto !important;
+        padding: calc(clamp(52px, 6.5vmin, 64px) + clamp(1.8rem, 4vmin, 3rem)) clamp(1.5rem, 3.5vmin, 3.5rem) clamp(1rem, 2vmin, 2rem) clamp(1.5rem, 3.5vmin, 3.5rem) !important;
+        align-items: center !important;
+    }
+
+    .home-container::before {
+        top: 50% !important;
+        left: 50% !important;
+        bottom: auto !important;
+        width: 150vmax !important;
+        height: 150vmax !important;
+        min-width: 2000px !important;
+        min-height: 2000px !important;
+        transform: translate(-100%, -50%) !important;
+        -webkit-mask-image: linear-gradient(to bottom, transparent calc(50% - 35vh), black calc(50% - 10vh), black calc(50% + 15vh), transparent calc(50% + 45vh)) !important;
+        mask-image: linear-gradient(to bottom, transparent calc(50% - 35vh), black calc(50% - 10vh), black calc(50% + 15vh), transparent calc(50% + 45vh)) !important;
+    }
+
+    /* Desktop Metade Esquerda (.esquerdo) */
+    .esquerdo {
+        order: 1 !important;
+        grid-row: auto !important;
+        padding: 0 !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+        justify-self: center !important;
+        align-self: center !important;
+        margin: 0 auto !important;
+        flex: initial !important;
+        width: fit-content !important;
+        max-width: 100% !important;
+        gap: clamp(1.1rem, 3vmin, 2.2rem) !important;
+    }
+
+    .header-texto {
+        align-items: flex-start !important;
+        text-align: left !important;
+        width: 100% !important;
+    }
+
+    .titulozinho {
+        font-size: clamp(1.4rem, 3.5vmin, 2.5rem) !important;
+        margin-bottom: 0 !important;
+        white-space: nowrap !important;
+    }
+
+    .titulo-txt {
+        font-size: clamp(2.8rem, 9vmin, 6.2rem) !important;
+        white-space: nowrap !important;
+    }
+
+    .botao {
+        margin-top: 0 !important;
+    }
+
+    .actions-wrapper {
+        display: inline-flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: clamp(0.85rem, 2.2vmin, 1.5rem) !important;
+        position: relative !important;
+        flex-wrap: nowrap !important;
+        max-width: 100% !important;
+    }
+
+    .redes-sociais {
+        position: static !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        margin-top: 0 !important;
+        margin-left: 0 !important;
+        gap: clamp(0.4rem, 1.2vmin, 0.75rem) !important;
+        display: flex !important;
+        align-items: center !important;
+        flex-wrap: nowrap !important;
+    }
+
+    .rede-icon {
+        font-size: clamp(1.4rem, 3.2vmin, 2rem) !important;
+        min-width: clamp(38px, 5vmin, 44px) !important;
+        min-height: clamp(38px, 5vmin, 44px) !important;
+    }
+
+    .botao-txt {
+        padding: clamp(1rem, 2.2vmin, 1.25rem) clamp(2.2rem, 4.5vmin, 3.25rem) !important;
+        min-width: clamp(11rem, 20vmin, 13rem) !important;
+        min-height: clamp(3rem, 5.5vmin, 3.6rem) !important;
+        font-size: clamp(1.05rem, 2.2vmin, 1.2rem) !important;
+        white-space: nowrap !important;
+    }
+
+    /* Desktop Metade Direita (.character-wrapper) */
+    .character-wrapper {
+        order: 2 !important;
+        grid-row: auto !important;
+        margin: 0 auto !important;
+        justify-self: center !important;
+        align-self: center !important;
+    }
+
+    .principal-img {
+        max-height: clamp(260px, 58vmin, 68vh) !important;
+    }
+
+    .bow { top: 10% !important; left: 6% !important; }
+    .bear { top: 38% !important; left: 0% !important; }
+    .stars { top: -4% !important; right: 4% !important; width: 26% !important; }
+    .strawberry { bottom: 2% !important; right: 5% !important; width: 14% !important; }
+    .cherries { top: 44% !important; right: 2% !important; }
+}

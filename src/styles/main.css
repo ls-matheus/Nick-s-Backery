@@ -1,0 +1,20 @@
+/* ==========================================================================
+   Nick's Bakery - Main Style Entrypoint
+   ========================================================================== */
+
+/* 1. Base Layer (Reset & Design Tokens) */
+@import './base/reset.css?v=1.0.5';
+@import './base/tokens.css?v=1.0.5';
+
+/* 2. Layout Layer (Core Page Architecture) */
+@import './layouts/page.css?v=1.0.5';
+
+/* 3. Components Base Layer (Base Rules & Classes) */
+@import './components/navbar.css?v=1.0.5';
+@import './components/home.css?v=1.0.5';
+@import './components/cards.css?v=1.0.5';
+
+/* 4. Platform-Specific Decoupled Modules (Isolated Platforms) */
+@import './components/mobile.css?v=1.0.5';
+@import './components/tablet.css?v=1.0.5';
+@import './components/desktop.css?v=1.0.5';

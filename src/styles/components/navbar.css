@@ -1,0 +1,279 @@
+/* ==========================================================================
+   Nick's Bakery - Responsive Navigation Bar Component
+   ========================================================================== */
+
+/* Mobile & Tablet Base Style (< 901px): In-Flow Header (No Overlap) */
+.começo {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    width: 100%;
+    height: auto;
+    padding: clamp(0.4rem, 1.2vmin, 0.75rem) 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: auto;
+    background: transparent;
+}
+
+.ptNavegação {
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: auto;
+}
+
+.barra {
+    position: relative;
+    width: fit-content;
+    max-width: none;
+    height: clamp(62px, 7.5vmin, 74px);
+    border-radius: 100px;
+    padding: clamp(12px, 1.6vmin, 16px) clamp(12px, 2vmin, 16px);
+    background: transparent;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+    overflow: hidden;
+    box-shadow: none;
+    transition: background 0.38s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-color 0.38s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.38s cubic-bezier(0.16, 1, 0.3, 1), 
+                backdrop-filter 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.barra:hover {
+    background: var(--bg-glass);
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.09);
+}
+
+.barra::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    border-radius: 100px;
+    background: radial-gradient(
+        160px circle at var(--mouse-x, -100%) var(--mouse-y, -100%), 
+        var(--primary-color), 
+        transparent 80%
+    );
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.barra:hover::before {
+    opacity: 1;
+}
+
+.nav-indicator {
+    position: absolute;
+    height: clamp(38px, 4.5vmin, 46px);
+    background: var(--primary-color);
+    border-radius: 100px;
+    transition: left 0.38s cubic-bezier(0.16, 1, 0.3, 1), 
+                width 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 0;
+    pointer-events: none;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: none;
+}
+
+.lista {
+    list-style: none;
+    display: flex;
+    width: auto;
+    gap: clamp(4px, 1vmin, 8px);
+    z-index: 1;
+}
+
+.item a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--primary-color);
+    padding: 0 clamp(8px, 1.5vmin, 14px);
+    height: clamp(38px, 4.5vmin, 46px);
+    width: auto;
+    min-width: clamp(40px, 4.5vmin, 46px);
+    border-radius: 100px;
+    gap: clamp(4px, 0.8vmin, 6px);
+    transition: all 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: clamp(0.85rem, 1.8vmin, 1rem);
+    font-weight: 600;
+}
+
+.item a:active {
+    transform: translateY(0) scale(0.94) !important;
+    transition: transform 0.1s ease !important;
+}
+
+.lista:not(.has-hover) .item.active a,
+.lista.has-hover .item.is-hovered a,
+.lista .item:hover a {
+    padding: 0 clamp(14px, 2.2vmin, 20px);
+    min-width: clamp(90px, 11vmin, 115px);
+}
+
+.lista.has-hover .item.active:not(.is-hovered) a {
+    padding: 0 clamp(8px, 1.5vmin, 14px);
+    min-width: clamp(40px, 4.5vmin, 46px);
+}
+
+.item a .material-symbols-outlined, 
+.item a i {
+    font-size: clamp(16px, 2.2vmin, 22px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lista:not(.has-hover) .item.active a .material-symbols-outlined,
+.lista:not(.has-hover) .item.active a i,
+.lista.has-hover .item.is-hovered a .material-symbols-outlined,
+.lista.has-hover .item.is-hovered a i,
+.lista .item:hover a .material-symbols-outlined,
+.lista .item:hover a i {
+    transform: scale(1.08);
+}
+
+.lista.has-hover .item.active:not(.is-hovered) a .material-symbols-outlined,
+.lista.has-hover .item.active:not(.is-hovered) a i {
+    transform: scale(1);
+}
+
+.item .nav-text {
+    max-width: 0;
+    opacity: 0;
+    transform: translateX(-5px);
+    overflow: hidden;
+    white-space: nowrap;
+    transition: max-width 0.38s cubic-bezier(0.16, 1, 0.3, 1), 
+                opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+                margin-left 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-left: 0;
+    pointer-events: none;
+    display: inline-block;
+    color: inherit;
+}
+
+.lista:not(.has-hover) .item.active .nav-text,
+.lista.has-hover .item.is-hovered .nav-text,
+.lista .item:hover .nav-text {
+    max-width: 120px;
+    opacity: 1;
+    transform: translateX(0);
+    margin-left: 6px;
+    display: inline-block;
+}
+
+.lista.has-hover .item.active:not(.is-hovered) .nav-text {
+    max-width: 0 !important;
+    opacity: 0 !important;
+    transform: translateX(-5px) !important;
+    margin-left: 0 !important;
+}
+
+/* Gerenciamento de cores de texto e ícones sincronizado com o indicador rosa */
+.item a,
+.item a * {
+    color: var(--primary-color);
+    transition: color 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.item.active a,
+.item.active a * {
+    color: #ffffff;
+}
+
+.lista:not(.has-hover) .item.active a,
+.lista:not(.has-hover) .item.active a * {
+    color: #ffffff !important;
+}
+
+.lista.has-hover .item.is-hovered a,
+.lista.has-hover .item.is-hovered a *,
+.item:hover a,
+.item:hover a * {
+    color: #ffffff !important;
+}
+
+.lista.has-hover .item.active:not(.is-hovered) a,
+.lista.has-hover .item.active:not(.is-hovered) a * {
+    color: var(--primary-color) !important;
+}
+
+.item:hover a,
+.item.active a {
+    transform: translateY(-1px);
+}
+
+/* Desktop Mode (>= 901px): Top Floating Glass Pill Bar */
+@media (min-width: 901px) {
+    .começo {
+        position: fixed;
+        top: clamp(1.2rem, 3vmin, 2rem);
+        bottom: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        width: fit-content;
+        height: auto;
+        padding: 0;
+        z-index: 1000;
+        pointer-events: none;
+    }
+
+    .barra {
+        height: clamp(54px, 6.5vmin, 64px);
+        padding: 0 10px;
+    }
+
+    .nav-indicator {
+        height: clamp(42px, 5vmin, 48px);
+    }
+
+    .item a {
+        padding: 0 clamp(10px, 2vmin, 16px);
+        height: clamp(42px, 5vmin, 48px);
+        min-width: clamp(42px, 5vmin, 48px);
+        font-size: clamp(0.92rem, 1.8vmin, 1.05rem);
+        gap: 8px;
+    }
+
+    .item.active a,
+    .item:hover a {
+        padding: 0 clamp(16px, 2.5vmin, 24px);
+        min-width: clamp(105px, 14vmin, 135px);
+    }
+
+    .item a .material-symbols-outlined, 
+    .item a i {
+        font-size: clamp(18px, 2.2vmin, 22px);
+    }
+}

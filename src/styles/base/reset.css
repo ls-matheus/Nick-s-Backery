@@ -1,0 +1,82 @@
+/* ==========================================================================
+   Nick's Bakery - Reset & Base Styles (Strict Click-Only, Anti-Drag, Anti-Select)
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    -webkit-user-drag: none !important;
+    user-drag: none !important;
+    -webkit-touch-callout: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+::selection {
+    background: transparent !important;
+    color: inherit !important;
+}
+
+::-moz-selection {
+    background: transparent !important;
+    color: inherit !important;
+}
+
+:root {
+    color-scheme: light !important;
+}
+
+html {
+    color-scheme: light !important;
+    font-size: 16px;
+    scroll-behavior: smooth;
+    overflow: hidden !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    overscroll-behavior: none !important;
+    touch-action: none !important;
+    background-color: #ffffff !important;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+body {
+    background-color: var(--bg-dark, #f8f9fa);
+    color: var(--text-color, #1a1a1a);
+    overflow: hidden !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-height: 100vh !important;
+    max-height: 100dvh !important;
+    overscroll-behavior: none !important;
+    touch-action: none !important;
+    font-family: 'Outfit', 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+img, video, svg, a, button {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    -webkit-user-drag: none !important;
+    user-drag: none !important;
+    -webkit-touch-callout: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+ul {
+    list-style: none;
+}

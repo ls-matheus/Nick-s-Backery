@@ -1,0 +1,143 @@
+/* ==========================================================================
+   Nick's Bakery - TABLET PLATFORM MODULE (601px - 900px) - INDEPENDENT
+   ========================================================================== */
+
+@media (min-width: 601px) and (max-width: 900px) {
+    /* Tablet Navbar In-Flow Header */
+    .começo {
+        position: relative !important;
+        top: auto !important;
+        bottom: auto !important;
+        left: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        height: auto !important;
+        padding: clamp(0.5rem, 1.5vmin, 0.85rem) 0 !important;
+        z-index: 10 !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        pointer-events: auto !important;
+        background: transparent !important;
+    }
+
+    .barra {
+        height: clamp(60px, 7vmin, 70px) !important;
+        padding: clamp(10px, 1.4vmin, 14px) clamp(10px, 1.8vmin, 16px) !important;
+    }
+
+    .nav-indicator {
+        height: clamp(40px, 4.8vmin, 46px) !important;
+    }
+
+    .item a {
+        padding: 0 clamp(14px, 2vmin, 20px) !important;
+        height: clamp(40px, 4.8vmin, 46px) !important;
+        font-size: clamp(0.9rem, 1.8vmin, 1.02rem) !important;
+    }
+
+    /* Tablet Home Layout Grid (50/50 Centered Rows) */
+    .home-container {
+        display: grid !important;
+        grid-template-rows: 1fr 1fr !important;
+        justify-items: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100% !important;
+        max-height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+        position: relative !important;
+        overflow: hidden !important;
+        overscroll-behavior: none !important;
+        touch-action: none !important;
+    }
+
+    .home-container::before {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        bottom: auto !important;
+        width: 180vw !important;
+        height: 180vw !important;
+        min-width: 1200px !important;
+        min-height: 1200px !important;
+        transform: translate(-50%, 0%) !important;
+    }
+
+    /* Tablet Top Half (.character-wrapper) */
+    .character-wrapper {
+        order: 1 !important;
+        grid-row: 1 !important;
+        margin: 0 auto !important;
+        justify-self: center !important;
+        align-self: center !important;
+        display: inline-flex !important;
+        position: relative !important;
+        width: fit-content !important;
+        max-width: 100% !important;
+    }
+
+    .principal-img {
+        max-height: clamp(140px, 35vmin, 42vh) !important;
+    }
+
+    .bow { top: 8% !important; left: 6% !important; }
+    .bear { top: 36% !important; left: 0% !important; }
+    .stars { top: -4% !important; right: 4% !important; width: 22% !important; }
+    .strawberry { bottom: 4% !important; right: 4% !important; width: 13% !important; }
+    .cherries { top: 42% !important; right: 1% !important; }
+
+    /* Tablet Bottom Half (.esquerdo) */
+    .esquerdo {
+        order: 2 !important;
+        grid-row: 2 !important;
+        padding: 0 0.75rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        justify-self: center !important;
+        align-self: center !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+        max-width: 600px !important;
+        gap: clamp(0.35rem, 1.8vmin, 1.2rem) !important;
+    }
+
+    .titulozinho {
+        font-size: clamp(0.95rem, 3.2vmin, 2.2rem) !important;
+        margin-bottom: 0 !important;
+    }
+
+    .titulo-txt {
+        font-size: clamp(1.6rem, 7.5vmin, 5.5rem) !important;
+    }
+
+    .actions-wrapper {
+        display: inline-flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: clamp(0.5rem, 1.8vmin, 1.25rem) !important;
+    }
+
+    .redes-sociais {
+        gap: clamp(0.3rem, 1vmin, 0.6rem) !important;
+    }
+
+    .rede-icon {
+        font-size: clamp(1rem, 2.5vmin, 1.8rem) !important;
+        min-width: clamp(28px, 4.5vmin, 44px) !important;
+        min-height: clamp(28px, 4.5vmin, 44px) !important;
+    }
+
+    .botao-txt {
+        padding: clamp(0.45rem, 1.5vmin, 1.125rem) clamp(1.25rem, 3.5vmin, 3rem) !important;
+        min-width: clamp(7.5rem, 18vmin, 12.5rem) !important;
+        min-height: clamp(2.2rem, 5vmin, 3.25rem) !important;
+        font-size: clamp(0.8rem, 1.8vmin, 1.15rem) !important;
+    }
+}

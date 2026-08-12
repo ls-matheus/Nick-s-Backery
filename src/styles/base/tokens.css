@@ -1,0 +1,31 @@
+/* ==========================================================================
+   Nick's Bakery - Design Tokens
+   ========================================================================== */
+
+:root {
+    --primary-color: hsl(343, 91%, 73%);
+    --hot-pink: #ff007f;
+    --secondary-color: #ff85a1;
+    --accent-color: #ff99ac;
+    --bg-dark: #f8f9fa;
+    --bg-glass: rgba(255, 255, 255, 0.45);
+    --text-color: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --nav-height: 72px;
+    --container-padding: 24px;
+
+    /* Platform Breakpoints */
+    --breakpoint-mobile: 600px;
+    --breakpoint-tablet: 900px;
+    --breakpoint-desktop: 901px;
+}
+
+/* Mobile-Specific Design Tokens (<= 600px) */
+@media (max-width: 600px) {
+    :root {
+        --nav-height: 48px;
+        --container-padding: 12px;
+        --mobile-title-size: clamp(1.2rem, 7.5vmin, 5.5rem);
+        --mobile-subtitle-size: clamp(0.75rem, 3.2vmin, 2.2rem);
+    }
+}

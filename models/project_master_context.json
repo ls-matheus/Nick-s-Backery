@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "project_name": "Nick's Bakery",
+  "project_type": "Interactive SPA Portfolio & Digital Brand Platform",
+  "version": "2.0.0",
+  "architecture_standard": "Enterprise Modular Web Architecture (Big Tech Level)",
+  "overview": {
+    "summary": "Plataforma web interativa de alta performance desenvolvida para o portfólio oficial de cosplays, loja digital de prints e hub de comunidade de Nick's Bakery. Apresenta computação gráfica 2D em tempo real, animações 3D Parallax com suavização LERP e estética Apple/Microsoft Glassmorphism.",
+    "brand_identity": "Estética kawaii premium com paleta de cores pastel (rosa e tons vibrantes HSL), tipografia expressiva e microinterações táteis de alta fluidez (60/120 FPS)."
+  },
+  "technology_stack": {
+    "core": ["HTML5 Semântico", "JavaScript ES6+ Modulares", "Vanilla CSS com Design Tokens"],
+    "styling": {
+      "methodology": "Design System Modular baseado em CSS Variables e Utility Tokens",
+      "effects": ["Apple Liquid Glassmorphism (backdrop-filter)", "Spotlight Border Radial Gradient", "Masking SVG Gooey Filter"]
+    },
+    "animation_engines": {
+      "liquid_canvas": {
+        "file": "src/js/core/liquid-canvas.js",
+        "description": "Engine de partículas 2D em HTML5 Canvas combinado com o filtro SVG #gooey para renderizar furos transparentes dinâmicos sobre a imagem da personagem utilizando operação de composição destination-out."
+      },
+      "parallax_tilt": {
+        "file": "src/js/core/parallax.js",
+        "description": "Engine de matemática 3D com interpolação linear (LERP = 0.12) para rotação (rotX, rotY) e escala adaptativa dos adesivos flutuantes em resposta às coordenadas dinâmicas do cursor."
+      },
+      "spotlight_text": {
+        "description": "Efeito de revelação de texto via máscara de gradiente radial (--title-mouse-x, --title-mouse-y)."
+      }
+    },
+    "routing": {
+      "file": "src/js/core/router.js",
+      "type": "Single Page Application (SPA) Client-Side Router",
+      "mechanism": "Carregamento assíncrono por fetch() dos templates em src/pages/*.html com transição de opacidade e recálculo animado da pílula rosa (.nav-indicator)."
+    }
+  },
+  "directory_map": {
+    "index_html": "Ponto de entrada principal da aplicação (SPA Bootstrap)",
+    "main_html": "Alias de compatibilidade do ponto de entrada",
+    "package_json": "Configurações do projeto e scripts de automação NPM (start, dev, lint, format)",
+    "src_assets_branding": "Imagens principais de avatar e assets gráficos da personagem (oi.png, oi2.png)",
+    "src_assets_icons": "Adesivos decorativos flutuantes com nomes semânticos (bow.png, bear.png, stars.png, strawberry.png, cherries.png)",
+    "src_js_core": "Módulos de lógica principal (router.js, liquid-canvas.js, parallax.js)",
+    "src_js_main": "Bootstrapper central do JavaScript",
+    "src_pages": "Templates de visão da aplicação (home.html, view.html, sell.html, server.html)",
+    "src_styles": "Arquitetura modular de CSS (base/reset.css, base/tokens.css, components/navbar.css, components/home.css, layouts/page.css, main.css)",
+    "models": "Diretório com definições de personas para IA e este manifesto master de contexto",
+    "docs": "Documentação técnica detalhada (ARCHITECTURE.md, DESIGN_SYSTEM.md)"
+  },
+  "design_system_tokens": {
+    "colors": {
+      "primary": "hsl(343, 91%, 73%)",
+      "secondary": "#ff85a1",
+      "accent": "#ff99ac",
+      "bg_dark": "#f8f9fa",
+      "bg_glass": "rgba(255, 255, 255, 0.45)",
+      "text_main": "#1a1a1a",
+      "text_secondary": "#4a4a4a"
+    },
+    "typography": {
+      "heading_handwritten": "'Caveat', cursive",
+      "body_and_ui": "'Outfit', 'Inter', system-ui, sans-serif"
+    }
+  },
+  "ai_execution_rules": [
+    "NUNCA quebrar nem alterar o comportamento visual ou renderização gráfica das animações 2D/3D originais.",
+    "SEMPRE manter os scripts organizados dentro da pasta src/js/core/ utilizando módulos ES6 export/import estritos.",
+    "SEMPRE utilizar as variáveis de cores e tokens definidos em src/styles/base/tokens.css ao adicionar novas estilizações.",
+    "GARANTIR acessibilidade WCAG 2.1 AA em todos os elementos interativos (atributos aria-label, roles semânticos e suporte a leitores de tela).",
+    "MANTER a integridade da arquitetura SPA sem recarregar a página nas transições entre subpáginas."
+  ],
+  "master_ai_system_prompt": "Você é o Engenheiro Principal e Arquiteto Chefe do projeto Nick's Bakery. Você conhece profundamente toda a estrutura de arquivos em src/, os efeitos gráficos em Canvas 2D (#gooey filter), a matemática 3D de Parallax com LERP e os Design Tokens do projeto. Qualquer modificação que você realizar DEVE seguir a Clean Architecture em src/, ser altamente performática (60/120 FPS), responsiva e visualmente deslumbrante."
+}

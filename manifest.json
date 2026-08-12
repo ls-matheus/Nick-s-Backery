@@ -1,0 +1,9 @@
+{
+  "name": "Nick's Bakery",
+  "short_name": "Nick's Bakery",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "orientation": "portrait"
+}
