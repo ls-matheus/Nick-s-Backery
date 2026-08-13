@@ -35,8 +35,8 @@ export class LiquidCanvasEngine {
         this.canvasFg.style.top = '0';
         this.canvasFg.style.left = '0';
         this.canvasFg.style.pointerEvents = 'none';
-        this.canvasFg.style.filter = "url('#gooey')";
-        this.canvasFg.style.opacity = '0.85';
+        this.canvasFg.style.filter = "url('#gooey') drop-shadow(0 10px 30px rgba(0, 0, 0, 0.06))";
+        this.canvasFg.style.opacity = '1';
         this.canvasFg.style.zIndex = '10';
         document.body.appendChild(this.canvasFg);
 
@@ -133,55 +133,124 @@ export class LiquidCanvasEngine {
     }
 
     animate() {
-        this.ctxBg.clearRect(0, 0, this.width, this.height);
-        this.ctxFg.clearRect(0, 0, this.width, this.height);
-
-        for (let i = 0; i < this.particles.length; i++) {
-            const p = this.particles[i];
-            
-            p.x += p.vx;
-            p.y += p.vy;
-            p.radius += 0.2; 
-            p.opacity -= p.decay;
-            
-            if (p.opacity <= 0) {
-                this.particles.splice(i, 1);
-                i--;
-                continue;
-            }
-            
-            this.ctxBg.beginPath();
-            this.ctxBg.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-            this.ctxBg.fillStyle = `rgba(255, 133, 161, ${p.opacity})`;
-            this.ctxBg.fill();
+        const img = document.querySelector('.principal-img.base-img');
+        const renderPage = document.querySelector('.renderPage');
+        const isFading = renderPage && renderPage.style.opacity === '0';
+        
+        if (img && this.currentImg !== img) {
+            this.currentImg = img;
         }
 
-        const img = document.querySelector('.principal-img.base-img');
+        if (isFading) {
+            if (img && img.style.visibility !== 'visible') {
+                img.style.opacity = '';
+                img.style.visibility = 'visible';
+            }
+            if (this.canvasFg && this.canvasFg.style.visibility !== 'hidden') {
+                this.canvasFg.style.visibility = 'hidden';
+            }
+            requestAnimationFrame(() => this.animate());
+            return;
+        }
+
+        let rect = null;
+        let newMaskPos = '';
+        let newMaskSize = '';
+        let rLeft = 0, rTop = 0, rWidth = 0, rHeight = 0;
+        let shouldRedraw = this.particles.length > 0;
+
+        let computedOpacity = 1;
+
         if (img) {
-            img.style.opacity = '0';
-            const rect = img.getBoundingClientRect();
+            const compStyle = window.getComputedStyle(img);
+            computedOpacity = parseFloat(compStyle.opacity);
             
-            this.ctxFg.globalCompositeOperation = 'source-over';
-            this.ctxFg.drawImage(img, rect.left, rect.top, rect.width, rect.height);
+            if (img.style.visibility !== 'hidden') {
+                img.style.opacity = '0';
+                img.style.visibility = 'hidden';
+            }
             
-            this.ctxFg.globalCompositeOperation = 'destination-out';
+            rect = img.getBoundingClientRect();
+            rLeft = Math.round(rect.left);
+            rTop = Math.round(rect.top);
+            rWidth = Math.round(rect.width);
+            rHeight = Math.round(rect.height);
+            
+            newMaskPos = `${rLeft}px ${rTop}px, ${rLeft}px ${rTop}px`;
+            newMaskSize = `${rWidth}px ${rHeight}px, ${rWidth}px ${rHeight}px`;
+            
+            if (this.lastMaskPos !== newMaskPos || this.lastMaskSize !== newMaskSize) {
+                shouldRedraw = true;
+            }
+        } else if (this.canvasFg.style.visibility !== 'hidden') {
+            shouldRedraw = true;
+        }
+
+        if (shouldRedraw) {
+            this.ctxBg.clearRect(0, 0, this.width, this.height);
+            this.ctxFg.clearRect(0, 0, this.width, this.height);
+
             for (let i = 0; i < this.particles.length; i++) {
                 const p = this.particles[i];
-                this.ctxFg.beginPath();
-                this.ctxFg.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                this.ctxFg.fillStyle = `rgba(0, 0, 0, ${p.opacity})`;
-                this.ctxFg.fill();
+                
+                p.x += p.vx;
+                p.y += p.vy;
+                p.radius += 0.2; 
+                p.opacity -= p.decay;
+                
+                if (p.opacity <= 0) {
+                    this.particles.splice(i, 1);
+                    i--;
+                    continue;
+                }
+                
+                this.ctxBg.beginPath();
+                this.ctxBg.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                this.ctxBg.fillStyle = `rgba(255, 133, 161, ${p.opacity})`;
+                this.ctxBg.fill();
             }
-            this.ctxFg.globalCompositeOperation = 'source-over';
-            
-            this.canvasFg.style.webkitMaskImage = `linear-gradient(to bottom, black 84%, transparent 100%), url('${img.getAttribute('src')}')`;
-            this.canvasFg.style.webkitMaskPosition = `${rect.left}px ${rect.top}px, ${rect.left}px ${rect.top}px`;
-            this.canvasFg.style.webkitMaskSize = `${rect.width}px ${rect.height}px, ${rect.width}px ${rect.height}px`;
-            this.canvasFg.style.webkitMaskRepeat = 'no-repeat, no-repeat';
-            this.canvasFg.style.webkitMaskComposite = 'source-in';
-            this.canvasFg.style.visibility = 'visible';
-        } else {
-            this.canvasFg.style.visibility = 'hidden';
+
+            if (img && rect) {
+                this.ctxFg.globalAlpha = computedOpacity;
+                this.ctxFg.globalCompositeOperation = 'source-over';
+                this.ctxFg.drawImage(img, rLeft, rTop, rWidth, rHeight);
+                this.ctxFg.globalAlpha = 1.0;
+                
+                this.ctxFg.globalCompositeOperation = 'destination-out';
+                for (let i = 0; i < this.particles.length; i++) {
+                    const p = this.particles[i];
+                    this.ctxFg.beginPath();
+                    this.ctxFg.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    this.ctxFg.fillStyle = `rgba(0, 0, 0, ${p.opacity})`;
+                    this.ctxFg.fill();
+                }
+                
+                if (this.canvasFg.style.opacity !== '1') {
+                    this.canvasFg.style.opacity = '1';
+                }
+                if (this.canvasFg.style.visibility !== 'visible') {
+                    this.canvasFg.style.visibility = 'visible';
+                    this.canvasFg.style.filter = "url('#gooey') drop-shadow(0 10px 30px rgba(0, 0, 0, 0.06))";
+                }
+                
+                if (this.lastMaskPos !== newMaskPos || this.lastMaskSize !== newMaskSize) {
+                    this.canvasFg.style.webkitMaskImage = `linear-gradient(to bottom, black 84%, transparent 100%), url('${img.getAttribute('src')}')`;
+                    this.canvasFg.style.webkitMaskPosition = newMaskPos;
+                    this.canvasFg.style.webkitMaskSize = newMaskSize;
+                    this.canvasFg.style.webkitMaskRepeat = 'no-repeat, no-repeat';
+                    this.canvasFg.style.webkitMaskComposite = 'source-in';
+                    this.lastMaskPos = newMaskPos;
+                    this.lastMaskSize = newMaskSize;
+                }
+                
+                if (this.canvasFg.style.visibility !== 'visible') {
+                    this.canvasFg.style.visibility = 'visible';
+                }
+            } else {
+                if (this.canvasFg.style.visibility !== 'hidden') {
+                    this.canvasFg.style.visibility = 'hidden';
+                }
+            }
         }
         
         requestAnimationFrame(() => this.animate());

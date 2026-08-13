@@ -67,7 +67,7 @@
         gap: clamp(1.5rem, 4vmin, 5.5rem) !important;
         max-width: 103rem !important;
         margin: 0 auto !important;
-        padding: calc(clamp(52px, 6.5vmin, 64px) + clamp(1.8rem, 4vmin, 3rem)) clamp(1.5rem, 3.5vmin, 3.5rem) clamp(1rem, 2vmin, 2rem) clamp(1.5rem, 3.5vmin, 3.5rem) !important;
+        padding: clamp(1.5rem, 3.5vmin, 3.5rem) !important;
         align-items: center !important;
     }
 
@@ -97,7 +97,7 @@
         flex: initial !important;
         width: fit-content !important;
         max-width: 100% !important;
-        gap: clamp(1.1rem, 3vmin, 2.2rem) !important;
+        gap: clamp(1.1rem, 2.5vw, 2.2rem) !important;
     }
 
     .header-texto {
@@ -107,13 +107,13 @@
     }
 
     .titulozinho {
-        font-size: clamp(1.4rem, 3.5vmin, 2.5rem) !important;
+        font-size: clamp(1.4rem, 3vw, 2.5rem) !important;
         margin-bottom: 0 !important;
         white-space: nowrap !important;
     }
 
     .titulo-txt {
-        font-size: clamp(2.8rem, 9vmin, 6.2rem) !important;
+        font-size: clamp(2.8rem, 7.5vw, 6.2rem) !important;
         white-space: nowrap !important;
     }
 
@@ -126,7 +126,7 @@
         flex-direction: row !important;
         align-items: center !important;
         justify-content: flex-start !important;
-        gap: clamp(0.85rem, 2.2vmin, 1.5rem) !important;
+        gap: clamp(0.85rem, 2vw, 1.5rem) !important;
         position: relative !important;
         flex-wrap: nowrap !important;
         max-width: 100% !important;
@@ -139,23 +139,23 @@
         transform: none !important;
         margin-top: 0 !important;
         margin-left: 0 !important;
-        gap: clamp(0.4rem, 1.2vmin, 0.75rem) !important;
+        gap: clamp(0.4rem, 1vw, 0.75rem) !important;
         display: flex !important;
         align-items: center !important;
         flex-wrap: nowrap !important;
     }
 
     .rede-icon {
-        font-size: clamp(1.4rem, 3.2vmin, 2rem) !important;
-        min-width: clamp(38px, 5vmin, 44px) !important;
-        min-height: clamp(38px, 5vmin, 44px) !important;
+        font-size: clamp(1.4rem, 2.5vw, 2rem) !important;
+        min-width: clamp(38px, 4vw, 44px) !important;
+        min-height: clamp(38px, 4vw, 44px) !important;
     }
 
     .botao-txt {
-        padding: clamp(1rem, 2.2vmin, 1.25rem) clamp(2.2rem, 4.5vmin, 3.25rem) !important;
-        min-width: clamp(11rem, 20vmin, 13rem) !important;
-        min-height: clamp(3rem, 5.5vmin, 3.6rem) !important;
-        font-size: clamp(1.05rem, 2.2vmin, 1.2rem) !important;
+        padding: clamp(1rem, 2vw, 1.25rem) clamp(2.2rem, 4.5vw, 3.25rem) !important;
+        min-width: clamp(11rem, 18vw, 13rem) !important;
+        min-height: clamp(3rem, 5vw, 3.6rem) !important;
+        font-size: clamp(1.05rem, 2vw, 1.2rem) !important;
         white-space: nowrap !important;
     }
 
@@ -169,7 +169,7 @@
     }
 
     .principal-img {
-        max-height: clamp(260px, 58vmin, 68vh) !important;
+        max-height: clamp(260px, 40vw, 68vh) !important;
     }
 
     .bow { top: 10% !important; left: 6% !important; }
@@ -177,4 +177,15 @@
     .stars { top: -4% !important; right: 4% !important; width: 26% !important; }
     .strawberry { bottom: 2% !important; right: 5% !important; width: 14% !important; }
     .cherries { top: 44% !important; right: 2% !important; }
+}
+
+/* ==========================================================================
+   ULTRAWIDE PLATFORM OVERRIDE (>= 1600px)
+   ========================================================================== */
+@media (min-width: 1600px) {
+    .home-container {
+        max-width: 120rem !important;
+        padding-left: clamp(4rem, 8vmin, 12rem) !important;
+        padding-right: clamp(4rem, 8vmin, 12rem) !important;
+    }
 }
